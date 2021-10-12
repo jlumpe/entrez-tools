@@ -1,5 +1,6 @@
 from types import MappingProxyType
 import typing as t
+import re
 
 from attr import attrs, attrib
 
@@ -54,3 +55,8 @@ def one_or_none(items, msg: str ='Got more than one result'):
 	if len(items) == 1:
 		return items[0]
 	raise ValueError(msg)
+
+
+def lookslike_uid(s: str) -> bool:
+	"""Check if a string looks like a UID (all digits)."""
+	return re.fullmatch(r'\d+', s) is not None
