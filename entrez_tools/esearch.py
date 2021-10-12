@@ -3,7 +3,8 @@ import typing as t
 from Bio import Entrez
 from Bio.Entrez.Parser import DictionaryElement
 
-from .common import one_or_none, get_db, DbArg
+from .common import one_or_none
+from .db import get_db, DbArg
 
 
 def make_esearch_term(field: str, value) -> str:

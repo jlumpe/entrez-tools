@@ -1,4 +1,4 @@
-from .common import get_db, DbArg
+from .db import get_db, DbArg
 
 
 def get_esummary_result_json(data: dict) -> dict:
