@@ -13,28 +13,38 @@ class Database:
 	----------
 	name
 		Database name.
+	has_accession
+		Whether this database's entries have an accession # in addition to a UID.
 	accession_search_field
 		ESearch field name to search by accession number.
 	accession_esummary_attr
 		ESummary property name (JSON format) containing the accession number.
 	"""
 	name: str = attrib()
-	accession_search_field: str = attrib()
-	accession_esummary_attr: str = attrib()
+	has_accession: bool = attrib()
+	accession_search_field: t.Optional[str] = attrib()
+	accession_esummary_attr: t.Optional[str] = attrib()
 
 
 DATABASES = MappingProxyType({
 	'nuccore': Database(
 		'nuccore',
+		True,
 		'Accession',
 		'accessionversion',
 	),
 	'assembly': Database(
 		'assembly',
+		True,
 		'Assembly Accession',
 		'assemblyaccession',
 	),
-	# TODO...
+	'taxonomy': Database(
+		'assembly',
+		False,
+		None,
+		None,
+	),
 })
 
 
