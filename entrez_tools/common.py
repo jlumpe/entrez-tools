@@ -64,6 +64,22 @@ def one_or_none(items, msg: str ='Got more than one result'):
 	raise ValueError(msg)
 
 
+def get_uid_list(uids) -> List[str]:
+	"""Get a set of UIDs as strings, from one of the formats accepted by BioPython Entrez.
+
+	Parameters
+	----------
+	uids
+		Single UID as integer or string, or multiple UIDs as an iterable of integers
+		or strings or a single comma-joined string.
+	"""
+	if isinstance(uids, str):
+		return uids.split(',')
+	if isinstance(uids, int):
+		return [str(uids)]
+	return list(map(str, uids))
+
+
 def lookslike_uid(s: str) -> bool:
 	"""Check if a string looks like a UID (all digits)."""
 	return re.fullmatch(r'\d+', s) is not None
