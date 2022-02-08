@@ -10,4 +10,3 @@ __version__ = '0.1'
 from .db import Database, DATABASES
 from .elink import get_elink_map, get_elink_map_single
 from .esearch import make_esearch_term, esearch_unique, esearch_accession
-from .esummary import get_esummary_result_json
